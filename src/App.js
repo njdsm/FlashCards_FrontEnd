@@ -8,7 +8,7 @@ import { Component } from 'react';
 class App extends Component {
   constructor(props){
     super(props);
-    this.getCollection();
+    this.getCollections();
   }
 
   state = {
@@ -19,10 +19,20 @@ class App extends Component {
     }
   
 
-  getCollection = async () => {
+  getCollections = async () => {
     let query = "http://127.0.0.1:8000/collection/";
     let collections = await axios.get(query);
     this.setState({allCollections: collections.data});
+  }
+
+  createCollection = async (newCollection) => {
+    console.log(newCollection)
+    try{
+      const reply = await axios.post(`http://127.0.0.1:8000/collection/`, newCollection).then(this.getCollections())
+    }
+    catch(ex){
+      console.log(`Error: ${ex}`)
+    }
   }
 
 
@@ -32,17 +42,12 @@ class App extends Component {
         <div>
           <Navbar />
           <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-5">
               <Sidebar collections={this.state.allCollections}/>
             </div>
-            <div className="col-md-8">
-              <CreateCollection />
+            <div className="col-md-7">
+              <CreateCollection create={(newCollection) => this.createCollection(newCollection)}/>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-md-4"></div>
-            <div className="col-md-8">Hello</div>  
-            
           </div>
         </div>
         

@@ -11,7 +11,7 @@ const Sidebar = (props) => {
                 <ol class="list-group list-group-numbered">
                     {props.collections.map((collection) => 
                         <a href="#">
-                            <li class="list-group-item d-flex justify-content-between align-items-start bg-dark">
+                            <li key={collection.id} class="list-group-item d-flex justify-content-between align-items-start bg-dark">
                                 <div class="ms-2 me-auto bg-dark">
                                 <div class="fw-bold bg-dark">{collection.name}</div>
                                 {collection.description}
