@@ -1,5 +1,4 @@
 import React, {useState}  from 'react';
-import axios from 'axios';
 import './createCollection.css';
 import {Button, Modal} from 'react-bootstrap';
 
@@ -22,7 +21,7 @@ const CreateCollection = (props) => {
     }
     
     return(
-        <div class="card w-50">
+        <div className="card w-50">
             <div>
                 <h5>Create a new Collection of flashCards</h5>
                 <Button onClick={toggleModal}>Create</Button>

@@ -16,6 +16,7 @@ class App extends Component {
     currentCard: {},
     currentCollection: {},
     cardsInCollection: [],
+    currentCollection: {},
     }
   
 
@@ -26,13 +27,17 @@ class App extends Component {
   }
 
   createCollection = async (newCollection) => {
-    console.log(newCollection)
     try{
       const reply = await axios.post(`http://127.0.0.1:8000/collection/`, newCollection).then(this.getCollections())
     }
     catch(ex){
       console.log(`Error: ${ex}`)
     }
+  }
+
+  selectCollection = (collection) => {
+    console.log(collection)
+    this.setState({currentCollection: collection})
   }
 
 
@@ -43,11 +48,14 @@ class App extends Component {
           <Navbar />
           <div className="row">
             <div className="col-md-5">
-              <Sidebar collections={this.state.allCollections}/>
+              <Sidebar collections={this.state.allCollections} select={(collection) => this.selectCollection(collection)}/>
             </div>
             <div className="col-md-7">
               <CreateCollection create={(newCollection) => this.createCollection(newCollection)}/>
             </div>
+          </div>
+          <div className="row">
+      
           </div>
         </div>
         

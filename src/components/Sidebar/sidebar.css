@@ -10,7 +10,7 @@
   }
   
   /* Sidebar links */
-  .sidebar a {
+  .sidebar button {
     display: block;
     color:white;
     padding: 16px;
