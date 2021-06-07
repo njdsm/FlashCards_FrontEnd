@@ -4,7 +4,6 @@ import Navbar from './components/Navbar/navbar';
 import Sidebar from './components/Sidebar/sidebar';
 import CreateCollection from './components/CreateCollection/createCollection';
 import { Component } from 'react';
-import { render } from '@testing-library/react';
 
 class App extends Component {
   constructor(props){
@@ -13,7 +12,7 @@ class App extends Component {
   }
 
   state = {
-    allCollections: {},
+    allCollections: [],
     currentCard: {},
     currentCollection: {},
     cardsInCollection: [],
@@ -23,7 +22,7 @@ class App extends Component {
   getCollection = async () => {
     let query = "http://127.0.0.1:8000/collection/";
     let collections = await axios.get(query);
-    this.setState({collections: collections.data});
+    this.setState({allCollections: collections.data});
   }
 
 
@@ -34,7 +33,7 @@ class App extends Component {
           <Navbar />
           <div className="row">
             <div className="col-md-4">
-              <Sidebar />
+              <Sidebar collections={this.state.allCollections}/>
             </div>
             <div className="col-md-8">
               <CreateCollection />

@@ -1,16 +1,26 @@
 import React, {useState}  from 'react';
-import axios from 'axios';
 import './sidebar.css';
 
 const Sidebar = (props) => {
+    console.log(props.collections)
+
     return(
         <div>      
-            <div class="sidebar bg-dark">
-                <a class="active" href="#home"><strong>Collections</strong></a>
-                <a href="#">Collection 1</a>
-                <a href="#">Collection 2</a>
-                <a href="#">Collection 3</a>
-                <p>Create Collection</p>
+            <div className="sidebar bg-dark">
+                <a className="active" href="#home"><strong>Collections</strong></a>
+                <ol class="list-group list-group-numbered">
+                    {props.collections.map((collection) => 
+                        <a href="#">
+                            <li class="list-group-item d-flex justify-content-between align-items-start bg-dark">
+                                <div class="ms-2 me-auto bg-dark">
+                                <div class="fw-bold bg-dark">{collection.name}</div>
+                                {collection.description}
+                                </div>
+                                <span class="badge bg-primary rounded-pill bg-dark">{collection.numberOfCards}</span>
+                            </li>    
+                        </a>                
+                    )}
+                </ol>
             </div>
         </div>
     )
