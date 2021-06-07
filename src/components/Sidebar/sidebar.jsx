@@ -1,4 +1,5 @@
 import React, {useState}  from 'react';
+import axios from 'axios';
 import './sidebar.css';
 
 const Sidebar = (props) => {
@@ -6,9 +7,9 @@ const Sidebar = (props) => {
         <div>      
             <div class="sidebar bg-dark">
                 <a class="active" href="#home"><strong>Collections</strong></a>
-                <a href="#news">Collection 1</a>
-                <a href="#contact">Collection 2</a>
-                <a href="#about">Collection 3</a>
+                <a href="#">Collection 1</a>
+                <a href="#">Collection 2</a>
+                <a href="#">Collection 3</a>
                 <p>Create Collection</p>
             </div>
         </div>
