@@ -1,7 +1,7 @@
 import React, {useState}  from 'react';
 import {Button, Modal} from 'react-bootstrap';
 import CreateFlashCard from '../CreateFlashCard/createFlashCard';
-
+import axios from 'axios';
 
 const SelectedCollection = (props) => {
 
@@ -24,6 +24,10 @@ const SelectedCollection = (props) => {
         props.updateCard(updatedCard, currentCard.id)
     }
 
+    const create = async (newCard) => {
+        props.addCard(newCard)
+    }
+
     const updateCardButton = (card) => {
         setCurrentCard(card);
         toggleUpdateModal();
@@ -41,7 +45,7 @@ const SelectedCollection = (props) => {
                             <h5>{props.collection.description}</h5>
                         </div>
                         <div>
-                            <CreateFlashCard></CreateFlashCard>
+                            <CreateFlashCard create={(newCard) => create(newCard)} collection={props.collection}></CreateFlashCard>
                         </div>
                         <div className="row">
                             <div className="col-sm-6">Front of Card</div>

@@ -72,6 +72,10 @@ class App extends Component {
     this.setCollectionCards(card.collection)
   }
 
+  async addCard(card){
+    await axios.post("http://127.0.0.1:8000/flashcard/", card);
+    this.setCollectionCards(card.collection)
+  }
 
   render(){
     return (
@@ -95,9 +99,9 @@ class App extends Component {
               </div>
               <div className="row">
                 <div className="col-md-12">
-                  <SelectedCollection cards={this.state.cardsInCollection} collection={this.state.currentCollection} updateCard={(card, id) => this.updateCard(card, id)} deleteCard={(card) => this.deleteCard(card)}/>                </div>
-                </div>
+                  <SelectedCollection cards={this.state.cardsInCollection} collection={this.state.currentCollection} updateCard={(card, id) => this.updateCard(card, id)} deleteCard={(card) => this.deleteCard(card)} addCard={(card) => this.addCard(card)}/>                </div>
               </div>
+            </div>
           </div>
         </div>
       </div>
