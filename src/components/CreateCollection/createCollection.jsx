@@ -33,12 +33,12 @@ const CreateCollection = (props) => {
                             <input onChange={event => setCollectionName(event.target.value)} type="text" name="collectionName" id="collectionName" value={collectionName} /><br></br>
                             <label for="Back_Text">Collection Description: </label>
                             <input onChange={event => setCollectionDescription(event.target.value)} type="text" name="collectionDescription" id="collectionDescription" value={collectionDescription} /> <br/>
-                            <button type="submit" value="Post" onClick={toggleModal}>Submit</button>
+                            <button className="btn btn-dark" type="submit" value="Post" onClick={toggleModal}>Submit</button>
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
                         <div className="reply-modal-button">
-                            <Button onClick={toggleModal}>Close</Button>
+                            <Button className="btn btn-dark" onClick={toggleModal}>Close</Button>
                         </div>
                     </Modal.Footer>
                 </Modal>    

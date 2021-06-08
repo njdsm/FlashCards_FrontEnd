@@ -1,7 +1,6 @@
 import React, {useState}  from 'react';
 import {Button, Modal} from 'react-bootstrap';
 import CreateFlashCard from '../CreateFlashCard/createFlashCard';
-import axios from 'axios';
 
 const SelectedCollection = (props) => {
 
@@ -97,7 +96,7 @@ const SelectedCollection = (props) => {
                     </Modal.Body>
                     <Modal.Footer>
                         <div className="reply-modal-button">
-                            <Button onClick={toggleUpdateModal}>Close</Button>
+                            <Button className="btn btn-dark" onClick={toggleUpdateModal}>Close</Button>
                         </div>
                     </Modal.Footer>
                 </Modal>   

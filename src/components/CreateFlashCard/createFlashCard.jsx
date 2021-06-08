@@ -32,7 +32,7 @@ const CreateFlashCard = (props) => {
                             <input onChange={event => setFrontText(event.target.value)} type="text" name="frontText" id="frontText" value={frontText} /><br></br>
                             <label>Back Text: </label>
                             <input onChange={event => setBackText(event.target.value)} type="text" name="backText" id="backText" value={backText} /> <br/>
-                            <button type="submit" value="Post" onClick={toggleModal}>Submit</button>
+                            <button className="btn btn-dark" type="submit" value="Post" onClick={toggleModal}>Submit</button>
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
