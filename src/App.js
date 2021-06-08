@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/navbar';
 import Sidebar from './components/Sidebar/sidebar';
 import CreateCollection from './components/CreateCollection/createCollection';
 import SelectedCollection from './components/SelectedCollection/selectedCollection';
+import SearchResults from './components/SearchResults/searchResults';
 import { Component } from 'react';
 
 class App extends Component {
@@ -14,7 +15,8 @@ class App extends Component {
       currentCard: {},
       currentCollection: {},
       cardsInCollection: [],
-      selectedCollectionRender: ""
+      selectedCollectionRender: "",
+      searchResults: []
       }
     this.getCollections();
   }
@@ -34,7 +36,7 @@ class App extends Component {
         return collection
       }
     })
-    console.log(results)
+    this.setState({searchResults: results})
   }
 
   createCollection = async (newCollection) => {
@@ -48,6 +50,7 @@ class App extends Component {
   }
 
   selectCollection = (collection) => {
+    this.setState({searchResults: []})
     this.setState({currentCollection: collection});
     this.setCollectionCards(collection.id)
   }
@@ -60,7 +63,7 @@ class App extends Component {
 
   async updateCard(card, id){
     let query = "http://127.0.0.1:8000/flashcard/" + id + "/";
-    let result = await axios.put(query, card);
+    await axios.put(query, card);
     this.setCollectionCards(card.collection)
   }
 
@@ -74,7 +77,7 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          <Navbar handleSearch={this.handleSearch}/>
+          <Navbar handleSearch={(searchTerm) => this.handleSearch(searchTerm)}/>
           <div className="row">
             <div className="col-md-3">
               <Sidebar collections={this.state.allCollections} select={(collection) => this.selectCollection(collection)}/>
@@ -83,6 +86,11 @@ class App extends Component {
               <div className="row">
                 <div className="col-md-12">
                   <CreateCollection create={(newCollection) => this.createCollection(newCollection)}/>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <SearchResults select={(collection) => this.selectCollection(collection)} results={this.state.searchResults} />
                 </div>
               </div>
               <div className="row">
