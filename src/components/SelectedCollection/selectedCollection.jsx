@@ -1,18 +1,14 @@
 import React, {useState}  from 'react';
 import {Button, Modal} from 'react-bootstrap';
-import axios from 'axios';
-
 
 
 const SelectedCollection = (props) => {
 
-    const [deleteModalState, setDeleteModalState] = useState(false);
     const [updateModalState, setUpdateModalState] = useState(false);
-    const [cardFrontText, setCardFrontText] = useState();
-    const [cardBackText, setCardBackText] = useState();
+    const [cardFrontText, setCardFrontText] = useState("");
+    const [cardBackText, setCardBackText] = useState("");
     const [currentCard, setCurrentCard] = useState();
 
-    const toggleDeleteModal = () => setDeleteModalState(!deleteModalState);
     const toggleUpdateModal = () => setUpdateModalState(!updateModalState);
 
     const cardSubmit = async (event) => {
@@ -22,6 +18,8 @@ const SelectedCollection = (props) => {
             'back_text': cardBackText,
             'collection': currentCard.collection
         }
+        setCardFrontText("");
+        setCardBackText("");
         props.updateCard(updatedCard, currentCard.id)
     }
 
@@ -31,8 +29,7 @@ const SelectedCollection = (props) => {
     }
 
     const deleteCardButton = (card) => {
-        setCurrentCard(card);
-        toggleDeleteModal();
+        props.deleteCard(card)
     }
 
     return(
@@ -75,9 +72,9 @@ const SelectedCollection = (props) => {
                     <Modal.Header>Edit Flashcard</Modal.Header>
                     <Modal.Body>
                         <form onSubmit={event => cardSubmit(event)}>
-                            <label for="Front_Text">Card Front Text: </label>
+                            <label>Card Front Text: </label>
                             <input onChange={event => setCardFrontText(event.target.value)} type="text" name="frontText" id="frontText" value={cardFrontText} /><br></br>
-                            <label for="Back_Text">Card Back Text: </label>
+                            <label>Card Back Text: </label>
                             <input onChange={event => setCardBackText(event.target.value)} type="text" name="backText" id="backText" value={cardBackText} /> <br/>
                             <button type="submit" value="Post" onClick={toggleUpdateModal}>Submit</button>
                         </form>
