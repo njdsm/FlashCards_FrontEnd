@@ -49,16 +49,22 @@ class App extends Component {
   }
 
   selectCollection = (collection) => {
-    console.log(collection)
     this.setState({currentCollection: collection})
     this.setCollectionCards(collection.id);
   }
 
   async setCollectionCards(collectionId){
-    console.log(collectionId)
     let query = "http://127.0.0.1:8000/flashcard/" + collectionId + "/"
     let result = await axios.get(query)
     this.setState({cardsInCollection: result.data})     
+  }
+
+  async updateCard(card, id){
+    console.log(card)
+    console.log(id)
+    let query = "http://127.0.0.1:8000/flashcard/" + id + "/";
+    let result = await axios.put(query, card);
+    this.setCollectionCards(id)
   }
 
   render(){
@@ -78,7 +84,7 @@ class App extends Component {
               </div>
               <div className="row">
                 <div className="col-md-12">
-                  <SelectedCollection cards={this.state.cardsInCollection} collection={this.state.currentCollection} />
+                  <SelectedCollection cards={this.state.cardsInCollection} collection={this.state.currentCollection} updateCard={(card, id) => this.updateCard(card, id)}/>
                 </div>
               </div>
               
