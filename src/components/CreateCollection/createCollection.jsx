@@ -26,7 +26,7 @@ const CreateCollection = (props) => {
                 <h5>Create a new Collection of flashCards</h5>
                 <Button onClick={toggleModal}>Create</Button>
                 <Modal show={modalState} onHide={() => toggleModal}>
-                    <Modal.Header>New Flashcard</Modal.Header>
+                    <Modal.Header>New Collection</Modal.Header>
                     <Modal.Body>
                         <form onSubmit={event => cardSubmit(event)}>
                             <label for="Collection_Name">Collection Name: </label>

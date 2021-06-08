@@ -1,5 +1,6 @@
 import React, {useState}  from 'react';
 import {Button, Modal} from 'react-bootstrap';
+import CreateFlashCard from '../CreateFlashCard/createFlashCard';
 
 
 const SelectedCollection = (props) => {
@@ -37,6 +38,9 @@ const SelectedCollection = (props) => {
             <div>
                 <h1>{props.collection.name}</h1>
                 <h5>{props.collection.description}</h5>
+            </div>
+            <div>
+                <CreateFlashCard></CreateFlashCard>
             </div>
             <div className="row">
                 <div className="col-sm-6">Front of Card</div>
