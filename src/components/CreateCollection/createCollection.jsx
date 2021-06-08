@@ -45,7 +45,6 @@ const CreateCollection = (props) => {
             </div>
         </div>
     )
-
 }
 
 export default CreateCollection

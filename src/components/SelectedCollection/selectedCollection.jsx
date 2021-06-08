@@ -81,25 +81,25 @@ const SelectedCollection = (props) => {
                             </div>
                         </div>
                     </div>
-              </div>
+                </div>
             )}
             <Modal show={updateModalState} onHide={() => toggleUpdateModal}>
-                    <Modal.Header>Edit Flashcard</Modal.Header>
-                    <Modal.Body>
-                        <form onSubmit={event => cardSubmit(event)}>
-                            <label>Card Front Text: </label>
-                            <input onChange={event => setCardFrontText(event.target.value)} type="text" name="frontText" id="frontText" value={cardFrontText} /><br></br>
-                            <label>Card Back Text: </label>
-                            <input onChange={event => setCardBackText(event.target.value)} type="text" name="backText" id="backText" value={cardBackText} /> <br/>
-                            <button type="submit" value="Post" onClick={toggleUpdateModal}>Submit</button>
-                        </form>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <div className="reply-modal-button">
-                            <Button className="btn btn-dark" onClick={toggleUpdateModal}>Close</Button>
-                        </div>
-                    </Modal.Footer>
-                </Modal>   
+                <Modal.Header>Edit Flashcard</Modal.Header>
+                <Modal.Body>
+                    <form onSubmit={event => cardSubmit(event)}>
+                        <label>Card Front Text: </label>
+                        <input onChange={event => setCardFrontText(event.target.value)} type="text" name="frontText" id="frontText" value={cardFrontText} /><br></br>
+                        <label>Card Back Text: </label>
+                        <input onChange={event => setCardBackText(event.target.value)} type="text" name="backText" id="backText" value={cardBackText} /> <br/>
+                        <button type="submit" value="Post" onClick={toggleUpdateModal}>Submit</button>
+                    </form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="reply-modal-button">
+                        <Button className="btn btn-dark" onClick={toggleUpdateModal}>Close</Button>
+                    </div>
+                </Modal.Footer>
+            </Modal>   
         </div>
     )
 }
