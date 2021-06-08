@@ -14,13 +14,11 @@ class App extends Component {
       currentCard: {},
       currentCollection: {},
       cardsInCollection: [],
+      selectedCollectionRender: ""
       }
     this.getCollections();
   }
-
-
   
-
   getCollections = async () => {
     let query = "http://127.0.0.1:8000/collection/";
     let collections = await axios.get(query);
@@ -28,7 +26,7 @@ class App extends Component {
   }
 
   handleSearch = (searchTerm) => {
-    let results = this.state.allCollections.map((collection) => {
+    let results = this.state.allCollections.filter((collection) => {
       if (collection.name.toLowerCase().includes(searchTerm.toLowerCase())){
         return collection
       }
@@ -46,11 +44,12 @@ class App extends Component {
     catch(ex){
       console.log(`Error: ${ex}`)
     }
+    this.getCollections()
   }
 
   selectCollection = (collection) => {
-    this.setState({currentCollection: collection})
-    this.setCollectionCards(collection.id);
+    this.setState({currentCollection: collection});
+    this.setCollectionCards(collection.id)
   }
 
   async setCollectionCards(collectionId){
@@ -88,15 +87,11 @@ class App extends Component {
               </div>
               <div className="row">
                 <div className="col-md-12">
-                  <SelectedCollection cards={this.state.cardsInCollection} collection={this.state.currentCollection} updateCard={(card, id) => this.updateCard(card, id)} deleteCard={(card) => this.deleteCard(card)}/>
+                  <SelectedCollection cards={this.state.cardsInCollection} collection={this.state.currentCollection} updateCard={(card, id) => this.updateCard(card, id)} deleteCard={(card) => this.deleteCard(card)}/>                </div>
                 </div>
               </div>
-              
-            </div>
           </div>
-        
         </div>
-        
       </div>
     );
   }

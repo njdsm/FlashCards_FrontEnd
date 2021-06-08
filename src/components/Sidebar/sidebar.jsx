@@ -17,7 +17,6 @@ const Sidebar = (props) => {
                                 <div className="fw-bold bg-dark">{collection.name}</div>
                                 <div className="fw-bold bg-dark">{collection.description}</div>
                             </div>
-                            <div className="badge bg-primary rounded-pill bg-dark">{collection.numberOfCards}</div>
                         </button>                
                     )}
                 </ol>

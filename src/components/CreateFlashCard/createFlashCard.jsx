@@ -23,7 +23,7 @@ const CreateFlashCard = (props) => {
         <div className="card w-50">
             <div>
                 <h5>Create a new flashCard for this collection</h5>
-                <Button onClick={toggleModal}>Create</Button>
+                <Button className="btn btn-dark" onClick={toggleModal}>Create</Button>
                 <Modal show={modalState} onHide={() => toggleModal}>
                     <Modal.Header>New Flashcard</Modal.Header>
                     <Modal.Body>
@@ -37,7 +37,7 @@ const CreateFlashCard = (props) => {
                     </Modal.Body>
                     <Modal.Footer>
                         <div className="reply-modal-button">
-                            <Button onClick={toggleModal}>Close</Button>
+                            <Button className="btn btn-dark" onClick={toggleModal}>Close</Button>
                         </div>
                     </Modal.Footer>
                 </Modal>    

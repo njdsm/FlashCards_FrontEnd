@@ -24,7 +24,7 @@ const CreateCollection = (props) => {
         <div className="card w-50">
             <div>
                 <h5>Create a new Collection of flashCards</h5>
-                <Button onClick={toggleModal}>Create</Button>
+                <Button className="btn btn-dark" onClick={toggleModal}>Create</Button>
                 <Modal show={modalState} onHide={() => toggleModal}>
                     <Modal.Header>New Collection</Modal.Header>
                     <Modal.Body>

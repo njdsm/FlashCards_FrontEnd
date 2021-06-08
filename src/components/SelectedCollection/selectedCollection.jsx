@@ -33,19 +33,27 @@ const SelectedCollection = (props) => {
         props.deleteCard(card)
     }
 
+    const collectionIsActive = () => {
+        if(props.collection.id){
+            return <div>
+                        <div>
+                            <h1>{props.collection.name}</h1>
+                            <h5>{props.collection.description}</h5>
+                        </div>
+                        <div>
+                            <CreateFlashCard></CreateFlashCard>
+                        </div>
+                        <div className="row">
+                            <div className="col-sm-6">Front of Card</div>
+                            <div className="col-sm-6">Back of Card</div>
+                        </div>
+                    </div>
+        }
+    }
+
     return(
         <div>
-            <div>
-                <h1>{props.collection.name}</h1>
-                <h5>{props.collection.description}</h5>
-            </div>
-            <div>
-                <CreateFlashCard></CreateFlashCard>
-            </div>
-            <div className="row">
-                <div className="col-sm-6">Front of Card</div>
-                <div className="col-sm-6">Back of Card</div>
-            </div>
+            {collectionIsActive()}
             {props.cards.map((card) => 
                 <div key={card.id} className="row">
                     <div className="col-sm-6">
